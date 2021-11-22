@@ -1,20 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title style="text-align: center;">
+      BIOS boot priority
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let p of priority; index as i">
+      <ion-label>{{ p }}</ion-label>
+      <span *ngIf="i == 0">
+        <ion-icon (click)="downBiosPriorityMovement(i)" slot="end" name="arrow-down-outline"></ion-icon>
+      </span>
+      <span *ngIf="i != 0 && i != 4">
+        <ion-icon (click)="upBiosPriorityMovement(i)" slot="end" name="arrow-up-outline"></ion-icon>
+        <ion-icon (click)="downBiosPriorityMovement(i)" slot="end" name="arrow-down-outline"></ion-icon>
+      </span>
+      <span *ngIf="i == 4">
+        <ion-icon (click)="upBiosPriorityMovement(i)" name="arrow-up-outline"></ion-icon>
+        <ion-icon></ion-icon>
+      </span>
+    </ion-item>
+  </ion-list>
 </ion-content>
